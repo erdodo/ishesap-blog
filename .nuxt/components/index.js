@@ -1,7 +1,7 @@
-export { default as Aside } from '../../components/Aside.vue'
-export { default as Footer } from '../../components/Footer.vue'
-export { default as Header } from '../../components/Header.vue'
-export { default as Liste } from '../../components/Liste.vue'
+export const Aside = () => import('../../components/Aside.vue' /* webpackChunkName: "components/aside" */).then(c => wrapFunctional(c.default || c))
+export const Footer = () => import('../../components/Footer.vue' /* webpackChunkName: "components/footer" */).then(c => wrapFunctional(c.default || c))
+export const Header = () => import('../../components/Header.vue' /* webpackChunkName: "components/header" */).then(c => wrapFunctional(c.default || c))
+export const Liste = () => import('../../components/Liste.vue' /* webpackChunkName: "components/liste" */).then(c => wrapFunctional(c.default || c))
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

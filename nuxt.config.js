@@ -67,7 +67,7 @@ export default {
     },
   },
   sitemap: {
-    hostname: "https://",
+    hostname: "https://blog.siberhesap.com",
     gzip: true,
     routes: ["/uye-ol/"],
   },
