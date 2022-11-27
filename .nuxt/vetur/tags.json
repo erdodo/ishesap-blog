@@ -1,0 +1,14 @@
+{
+  "Aside": {
+    "description": "Auto imported from components/Aside.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/Header.vue"
+  },
+  "Liste": {
+    "description": "Auto imported from components/Liste.vue"
+  }
+}

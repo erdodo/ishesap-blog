@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{427:function(t,n,e){"use strict";e.r(n);var l={},c=e(54),component=Object(c.a)(l,(function(){var t=this._self._c;return t("div",{staticClass:"w-100"},[t("el-card",[this._v(" Footer ")])],1)}),[],!1,null,null,null);n.default=component.exports}}]);
