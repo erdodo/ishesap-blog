@@ -6,7 +6,7 @@
       <div style="height: calc(100vh - 61px - 64px)" class="overflow-auto w-100 py-4 px-2">
         <div class="container">
           <el-carousel indicator-position="inside" height="500px" :autoplay="true">
-            <el-carousel-item v-for="ktg in kategoriler" :key="ktg" class="rounded">
+            <el-carousel-item v-for="ktg in slider" :key="ktg" class="rounded">
               <div class="position-relative">
                 <el-image :src="getBlogImage(ktg.image)" style="height: 500px; width: 100%" fit="cover">
                   <div slot="placeholder" v-loading="true">Yükleniyor<span class="dot">...</span></div>
@@ -20,8 +20,9 @@
                     type="warning"
                     size="small"
                     @click="$router.push('/kategori/' + ktg.title.replace(/\s/g, '-') + '?k=' + ktg.id)"
-                    >Daha fazla</el-button
                   >
+                    <a :href="'/kategori/' + ktg.title.replace(/\s/g, '-') + '?k=' + ktg.id">Daha fazla...</a>
+                  </el-button>
                 </div>
               </div>
             </el-carousel-item>
@@ -131,12 +132,19 @@
                     <h1 class="ellipsis-1">{{ blog.title }}</h1>
                     <div class="text">
                       <p class="ellipsis-1">{{ blog.content }}</p>
-                      <el-button type="primary" size="small">Devamı...</el-button>
+                      <el-tag type="primary" size="small">
+                        <a :href="'/detay/' + blog.title.replace(/\s/g, '-') + '?b=' + blog.id">Devamı...</a>
+                      </el-tag>
                     </div>
                   </div>
                 </section>
               </main>
             </div>
+          </div>
+          <div class="my-5">
+            <el-tag class="m-2" v-for="ktg in kategoriler" :key="ktg.id">
+              <a :href="'/kategori/' + ktg.title.replace(/\s/g, '-') + '?k=' + ktg.id">{{ ktg.title }}</a>
+            </el-tag>
           </div>
         </div>
       </div>
@@ -152,6 +160,7 @@ export default {
       blogImgUrl: "https://blog.siberhesap.com/uploads/",
       kategoriler: [],
       bloglar: [],
+      slider: [],
       kobi_card: false,
       on_card: false,
       resmi_card: false,
@@ -167,7 +176,7 @@ export default {
     moment,
     getKategoriler() {
       const prm = {
-        limit: 10,
+        limit: 100,
         page: 1,
         sorts: {},
         filters: {},
@@ -175,6 +184,13 @@ export default {
         column_array_id_query: 0,
       };
       this.$axios.$post("public/tables/kategori", { params: JSON.stringify(prm) }).then((res) => {
+        this.slider = [];
+        let say = 0;
+        for (const val of Object.values(res.data.records)) {
+          this.slider.push(val);
+          say++;
+          if (say == 6) break;
+        }
         this.kategoriler = res.data.records;
       });
     },

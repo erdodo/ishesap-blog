@@ -84,7 +84,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"document","htmlAttrs":{"lang":"en"},"bodyAttrs":{"class":"light"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ficon\u002Fico.png"},{"rel":"stylesheet","href":"\u002Fbootstrap.css"},{"rel":"stylesheet","href":"\u002Ficon.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002Fbootstrap-icons@1.10.2\u002Ffont\u002Fbootstrap-icons.css"}],"style":[],"script":[]},
+    head: {"title":"İş Hesap - Blog","htmlAttrs":{"lang":"tr"},"bodyAttrs":{"class":"light"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ficon\u002Fico.png"},{"rel":"stylesheet","href":"\u002Fbootstrap.css"},{"rel":"stylesheet","href":"\u002Ficon.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002Fbootstrap-icons@1.10.2\u002Ffont\u002Fbootstrap-icons.css"}],"style":[],"script":[]},
 
     store,
     router,

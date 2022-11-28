@@ -4,39 +4,45 @@
     "path": "/giris-yap",
     "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/giris-yap.vue",
     "chunkName": "pages/giris-yap",
-    "url": "/giris-yap"
+    "url": "/giris-yap",
+    "_name": "_47b29ead"
   },
   {
     "name": "kalıp",
     "path": "/kal%C4%B1p",
     "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/kalıp.vue",
     "chunkName": "pages/kalıp",
-    "url": "/kal%C4%B1p"
+    "url": "/kal%C4%B1p",
+    "_name": "_72f9914d"
   },
   {
     "name": "uye-ol",
     "path": "/uye-ol",
     "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/uye-ol.vue",
     "chunkName": "pages/uye-ol",
-    "url": "/uye-ol"
+    "url": "/uye-ol",
+    "_name": "_63cdb0fe"
   },
   {
     "name": "detay-title",
     "path": "/detay/:title?",
     "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/detay/_title.vue",
-    "chunkName": "pages/detay/_title"
+    "chunkName": "pages/detay/_title",
+    "_name": "_33f78616"
   },
   {
     "name": "kategori-title",
     "path": "/kategori/:title?",
     "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/kategori/_title.vue",
-    "chunkName": "pages/kategori/_title"
+    "chunkName": "pages/kategori/_title",
+    "_name": "_7e99fe8c"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/index.vue",
     "chunkName": "pages/index",
-    "url": "/"
+    "url": "/",
+    "_name": "_e3fb842c"
   }
 ]

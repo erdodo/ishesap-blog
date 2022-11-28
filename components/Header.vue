@@ -64,4 +64,12 @@ export default {
 .active-iptal {
   border-bottom: none !important;
 }
+.el-menu-item {
+  padding: 0 5px !important;
+}
+@media screen and (min-width: 900px) {
+  .el-menu-item {
+    padding: 0 25px !important;
+  }
+}
 </style>
