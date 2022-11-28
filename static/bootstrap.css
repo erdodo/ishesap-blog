@@ -88,6 +88,9 @@
     --bs-code-color: #d63384;
     --bs-highlight-bg: #fff3cd
 }
+.cursor-pointer{
+    cursor: pointer;
+}
 
 *,
 ::after,
@@ -111,9 +114,31 @@ body {
     text-align: var(--bs-body-text-align);
     background-color: var(--bs-body-bg);
     -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: transparent;
+    overflow:hidden;
 }
-
+.ellipsis-1{
+    display: -webkit-box !important;
+      
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+  .ellipsis-2{
+    display: -webkit-box !important;
+      
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+  .ellipsis-3{
+    display: -webkit-box !important;
+      
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+  
 hr {
     margin: 1rem 0;
     color: inherit;
