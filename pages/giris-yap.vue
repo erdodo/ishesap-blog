@@ -52,12 +52,14 @@ export default {
       this.$axios.$post("login", this.uye).then((res) => {
         if (res.status == "success") {
           this.$auth.$storage.setUniversal("token", res.data.token);
-
-          this.$message({
-            message: "Giriş Başarılı.",
-            type: "success",
+          this.$axios.$post(res.data.token + "/getLoggedInUserInfo", this.uye).then((res2) => {
+            this.$auth.$storage.setUniversal("user", res2.data);
+            this.$message({
+              message: "Giriş Başarılı.",
+              type: "success",
+            });
+            this.$router.push("/");
           });
-          this.$router.push("/");
         }
       });
     },

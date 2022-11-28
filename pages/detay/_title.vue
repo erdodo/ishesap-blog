@@ -42,15 +42,28 @@
               </div>
 
               <div class="d-flex d-sm-none">
-                <div>
-                  <a class="btn btn-secondary rounded-circle pt-2 mx-1 cursor-pointer"
-                    ><i class="bi m-0 fs-5 bi-bookmark"></i
-                  ></a>
-                </div>
-                <div>
-                  <a class="btn btn-secondary rounded-circle pt-2 mx-1 cursor-pointer"
-                    ><i class="bi m-0 fs-5 bi-hand-thumbs-up"></i
-                  ></a>
+                <div class="">
+                  <a
+                    class="btn rounded-circle pt-2 mx-1 cursor-pointer"
+                    :class="begeni_state == true ? 'btn-primary' : 'btn-secondary'"
+                    @click="setBegeni()"
+                    @mouseenter="begeni_visible = true"
+                    @mouseleave="begeni_visible = false"
+                  >
+                    <div v-if="islogin">
+                      <div v-if="!begeni_visible" style="width: 20px" class="text-center">
+                        <i class="fs-5">{{ blog_detail.blog_begeni_sayisi > 0 ? blog_detail.blog_begeni_sayisi : 0 }}</i>
+                      </div>
+
+                      <div v-if="begeni_visible">
+                        <i v-if="begeni_state" class="bi m-0 fs-5 bi-star-fill"></i>
+                        <i v-else class="bi m-0 fs-5 bi-star"></i>
+                      </div>
+                    </div>
+                    <div v-else style="width: 20px" class="text-center">
+                      <i class="fs-5">{{ blog_detail.blog_begeni_sayisi > 0 ? blog_detail.blog_begeni_sayisi : 0 }}</i>
+                    </div>
+                  </a>
                 </div>
                 <div>
                   <a
@@ -115,7 +128,7 @@
                         style="background: rgba(0, 0, 0, 0.7)"
                       >
                         <h4 class="text-white">{{ blog.title }}</h4>
-                        <a :href="'/detay/' + blog.title.replace(/\s/g, '-') + '?b=' + blog.id" class="text-white"
+                        <a :href="'/detay/' + blog.title.replace(/s/g, '-') + '?b=' + blog.id" class="text-white"
                           >Devamı...</a
                         >
                       </div>
@@ -127,16 +140,30 @@
             </div>
             <div class="d-none d-sm-block col-sm-1 position-relative">
               <div class="d-flex flex-column position-sticky" style="top: calc(50vh - 162px)">
-                <div>
-                  <a class="btn btn-secondary rounded-circle pt-2 my-1 cursor-pointer"
-                    ><i class="bi m-0 fs-5 bi-bookmark"></i
-                  ></a>
+                <div class="">
+                  <a
+                    class="btn rounded-circle pt-2 my-1 cursor-pointer"
+                    :class="begeni_state == true ? 'btn-primary' : 'btn-secondary'"
+                    @click="setBegeni()"
+                    @mouseenter="begeni_visible = true"
+                    @mouseleave="begeni_visible = false"
+                  >
+                    <div v-if="islogin">
+                      <div v-if="!begeni_visible" style="width: 20px" class="text-center">
+                        <i class="fs-5">{{ blog_detail.blog_begeni_sayisi > 0 ? blog_detail.blog_begeni_sayisi : 0 }}</i>
+                      </div>
+
+                      <div v-if="begeni_visible">
+                        <i v-if="begeni_state" class="bi m-0 fs-5 bi-star-fill"></i>
+                        <i v-else class="bi m-0 fs-5 bi-star"></i>
+                      </div>
+                    </div>
+                    <div v-else style="width: 20px" class="text-center">
+                      <i class="fs-5">{{ blog_detail.blog_begeni_sayisi > 0 ? blog_detail.blog_begeni_sayisi : 0 }}</i>
+                    </div>
+                  </a>
                 </div>
-                <div>
-                  <a class="btn btn-secondary rounded-circle pt-2 my-1 cursor-pointer"
-                    ><i class="bi m-0 fs-5 bi-hand-thumbs-up"></i
-                  ></a>
-                </div>
+
                 <div>
                   <a
                     class="btn rounded-circle pt-2 btn-secondary my-1"
@@ -175,30 +202,26 @@
           </div>
           <el-divider></el-divider>
           <div class="d-flex w-100 flex-column">
-            <span>Yorumunuz:</span>
-            <el-input type="textarea" :rows="3" placeholder="Yorumunuzu buraya yazabilirsiniz." v-model="textarea">
-            </el-input>
-            <div class="d-flex justify-content-end">
-              <el-button type="primary" class="my-2">Gönder</el-button>
+            <div v-if="islogin">
+              <span>Yorumunuz:</span>
+              <el-input type="textarea" :rows="3" placeholder="Yorumunuzu buraya yazabilirsiniz." v-model="yorum_content">
+              </el-input>
+              <div class="d-flex justify-content-end">
+                <el-button type="primary" class="my-2" @click="setYorum()"> Gönder</el-button>
+              </div>
             </div>
+
             <div class="my-5">
-              <el-timeline>
-                <el-timeline-item timestamp="2018/4/12" placement="top">
+              <el-timeline class="ps-0">
+                <el-timeline-item
+                  v-for="yorum in yorumlar"
+                  :key="yorum"
+                  :timestamp="moment(yorum.created_at).format('Do MMMM  YYYY, h:mm')"
+                  placement="top"
+                >
                   <el-card>
-                    <h4>Update Github template</h4>
-                    <p>Tom committed 2018/4/12 20:46</p>
-                  </el-card>
-                </el-timeline-item>
-                <el-timeline-item timestamp="2018/4/3" placement="top">
-                  <el-card>
-                    <h4>Update Github template</h4>
-                    <p>Tom committed 2018/4/3 20:46</p>
-                  </el-card>
-                </el-timeline-item>
-                <el-timeline-item timestamp="2018/4/2" placement="top">
-                  <el-card>
-                    <h4>Update Github template</h4>
-                    <p>Tom committed 2018/4/2 20:46</p>
+                    <span class="h5">{{ yorum.user_id }}</span>
+                    <p>{{ yorum.content }}</p>
                   </el-card>
                 </el-timeline-item>
               </el-timeline>
@@ -222,12 +245,23 @@ export default {
       blog_kategoriler: {},
       blogs: {},
       location_href: "",
+      begeni_state: false,
+      begeni_id: 0,
+      begeni_visible: false,
+      islogin: false,
+      yorumlar: [],
+      yorum_content: "",
     };
   },
   mounted() {
     moment.locale("tr");
+    this.islogin = this.$auth.$storage.getUniversal("token");
     this.location_href = "https://ishesap-blog.vercel.app" + this.$route.path; //window.location.href;
     this.getBlog();
+    if (this.islogin) {
+      this.getBegeni();
+    }
+    this.getYorumlar();
   },
   methods: {
     moment,
@@ -246,6 +280,42 @@ export default {
         this.loading = false;
       });
     },
+    getBegeni() {
+      let params = {
+        page: 1,
+        limit: 1,
+        sorts: [],
+        column_array_id: 0,
+        column_array_id_query: 0,
+        filters: {
+          blog_id: { type: 1, guiType: "multiselect", filter: [this.$route.query.b] },
+          user_id: { type: 1, guiType: "multiselect", filter: [this.$auth.$storage.getUniversal("user")?.user?.id] },
+        },
+      };
+
+      this.$axios.$post("public/tables/blog_begeni", { params: JSON.stringify(params) }).then((res) => {
+        this.begeni_state = res.data.all_records_count > 0;
+        this.begeni_id = res.data.records[0].id;
+      });
+    },
+    setBegeni() {
+      if (this.begeni_state == false) {
+        this.$axios
+          .$post(this.$auth.$storage.getUniversal("token") + "/tables/blog_begeni/store", {
+            blog_id: this.$route.query.b,
+            column_set_id: "0",
+          })
+          .then((res) => {
+            this.begeni_state = true;
+          });
+      } else {
+        this.$axios
+          .$post(this.$auth.$storage.getUniversal("token") + "/tables/blog_begeni/" + this.begeni_id + "/delete")
+          .then((res) => {
+            this.begeni_state = false;
+          });
+      }
+    },
     getDigerBloglar() {
       let params = {
         page: 1,
@@ -263,6 +333,49 @@ export default {
     getBlogImage(img) {
       if (img == null) return;
       return this.blogImgUrl + JSON.parse(img)?.[0].destination_path + "m_" + JSON.parse(img)?.[0].file_name;
+    },
+    getYorumlar() {
+      let params = {
+        page: 1,
+        limit: 20,
+        sorts: [],
+        column_array_id: 0,
+        column_array_id_query: 0,
+        filters: {
+          blog_id: { type: 1, guiType: "multiselect", filter: [this.$route.query.b] },
+        },
+      };
+
+      this.$axios.$post("public/tables/yorumlar", { params: JSON.stringify(params) }).then((res) => {
+        this.yorumlar = res.data.records;
+      });
+    },
+    setYorum() {
+      this.$axios
+        .$post(this.$auth.$storage.getUniversal("token") + "/tables/yorumlar/store", {
+          blog_id: this.$route.query.b,
+          content: this.yorum_content,
+          column_set_id: "0",
+        })
+        .then((res) => {
+          if (res.data.message == "success") {
+            this.$message({
+              message: "Yorum Başarıyla Gönderildi",
+              type: "success",
+            });
+          } else {
+            this.$message({
+              message: "Yorum Gönderilirken Bir Hata İle Karşılaşıldı.",
+              type: "error",
+            });
+          }
+        })
+        .catch(() => {
+          this.$message({
+            message: "Yorum Gönderilirken Bir Hata İle Karşılaşıldı.",
+            type: "error",
+          });
+        });
     },
   },
 };
