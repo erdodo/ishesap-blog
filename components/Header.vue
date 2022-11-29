@@ -32,7 +32,12 @@
 
     <!--Kullanıcı işlemleri-->
     <template v-if="this.$auth.$storage.getUniversal('token')">
-      <el-menu-item class="" index="/profil">Profil </el-menu-item>
+      <el-submenu index="">
+        <template slot="title"> Profil </template>
+        <el-menu-item index="/profil">Profil</el-menu-item>
+        <el-divider class="my-1"></el-divider>
+        <el-menu-item @click="cikis()">Çıkış Yap</el-menu-item>
+      </el-submenu>
     </template>
     <template v-else>
       <el-menu-item index="/uye-ol">Üye Ol</el-menu-item>
@@ -74,6 +79,11 @@ export default {
         this.kategori = res.data.records;
         this.loaded = true;
       });
+    },
+    cikis() {
+      this.$auth.$storage.removeUniversal("user");
+      this.$auth.$storage.removeUniversal("token");
+      window.location.href = "/";
     },
   },
   mounted() {

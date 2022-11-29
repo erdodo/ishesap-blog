@@ -105,6 +105,7 @@
                     :src="getBlogImage(user_detail.profile_picture)"
                     class="rounded-circle"
                     style="height: 100px; width: 100px; object-fit: contain"
+                    :alt="blog_detail.title"
                   ></el-image>
                   <div class="px-4">
                     <h5>{{ user_detail.name_basic }} {{ user_detail.surname }}</h5>

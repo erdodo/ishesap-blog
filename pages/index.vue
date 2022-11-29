@@ -8,7 +8,7 @@
           <el-carousel indicator-position="inside" height="500px" :autoplay="true">
             <el-carousel-item v-for="ktg in slider" :key="ktg" class="rounded">
               <div class="position-relative">
-                <el-image :src="getBlogImage(ktg.image)" style="height: 500px; width: 100%" fit="cover">
+                <el-image :src="getBlogImage(ktg.image)" :alt="ktg.title" style="height: 500px; width: 100%" fit="cover">
                   <div slot="placeholder" v-loading="true">Yükleniyor<span class="dot">...</span></div>
                 </el-image>
                 <div
@@ -116,7 +116,11 @@
           <div class="row">
             <div class="col-12 col-md-6" v-for="blog in bloglar" :key="blog.id">
               <main class="main-cards">
-                <section class="main-card main-card-one" :style="{ background: 'url(' + getBlogImage(blog.image) + ')' }">
+                <section
+                  class="main-card main-card-one"
+                  :alt="blog.title"
+                  :style="{ background: 'url(' + getBlogImage(blog.image) + ')' }"
+                >
                   <div class="top">
                     <div class="actions">
                       <i class="fa-regular fa-bookmark"></i>
@@ -131,7 +135,7 @@
                     </div>
                     <h1 class="ellipsis-1">{{ blog.title }}</h1>
                     <div class="text">
-                      <p class="ellipsis-1">{{ blog.content }}</p>
+                      <p class="ellipsis-1" v-html="blog.html_content">{{}}</p>
                       <el-tag type="primary" size="small">
                         <a :href="'/detay/' + blog.title.replace(/\s/g, '-') + '?b=' + blog.id">Devamı...</a>
                       </el-tag>
@@ -168,6 +172,7 @@ export default {
     };
   },
   mounted() {
+    document.title = "Bloglar - İş Hesap";
     moment.locale("tr");
     this.getKategoriler();
     this.getBlogs();

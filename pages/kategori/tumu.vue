@@ -20,5 +20,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  mounted() {
+    document.title = "Bloglar - İş Hesap";
+  },
+};
 </script>
