@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header></Header>
+    <Header :ktg_visible="true"></Header>
     <div class="d-flex">
       <Aside v-if="false"></Aside>
       <div style="height: calc(100vh - 61px - 64px)" class="overflow-auto w-100 py-4 px-2">

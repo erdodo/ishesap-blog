@@ -16,12 +16,28 @@
     "_name": "_72f9914d"
   },
   {
+    "name": "profil",
+    "path": "/profil",
+    "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/profil.vue",
+    "chunkName": "pages/profil",
+    "url": "/profil",
+    "_name": "_72c67158"
+  },
+  {
     "name": "uye-ol",
     "path": "/uye-ol",
     "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/uye-ol.vue",
     "chunkName": "pages/uye-ol",
     "url": "/uye-ol",
     "_name": "_63cdb0fe"
+  },
+  {
+    "name": "kategori-tumu",
+    "path": "/kategori/tumu",
+    "component": "/Users/erdoganyesil/Sites/IsHesap/blog/pages/kategori/tumu.vue",
+    "chunkName": "pages/kategori/tumu",
+    "url": "/kategori/tumu",
+    "_name": "_1b61f18a"
   },
   {
     "name": "detay-title",

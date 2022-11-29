@@ -343,6 +343,7 @@ export default {
         column_array_id_query: 0,
         filters: {
           blog_id: { type: 1, guiType: "multiselect", filter: [this.$route.query.b] },
+          state: { type: 1, guiType: "boolean", filter: true },
         },
       };
 
